@@ -55,7 +55,7 @@ ROOT_URLCONF = 'DbCheck.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -75,12 +75,14 @@ WSGI_APPLICATION = 'DbCheck.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+	'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+        /* 'ENGINE': 'django.db.backends.mysql',
         'NAME': 'apptek_analytics_db',
         'HOST': '91.107.217.142',
         'USER': 'Rabi',
         'PASSWORD': 'PCSGlobal@4321',
-        'PORT': '54256'
+        'PORT': '54256' */
     }
 }
 
@@ -121,7 +123,7 @@ USE_TZ = True
 import os
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']
+# STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
