@@ -5,6 +5,23 @@ from SampleApp .models import *
 
 def home(request):
 	d = RegisterPage.objects.all()
+	if request.method == "POST":
+		if "up" in request.POST:
+			s = RegisterPage.objects.get(id=request.POST['id'])
+			s.fname = request.POST.get('f')
+			s.lname = request.POST.get('l')
+			s.mail = request.POST.get('e')
+			s.phone = request.POST.get('p')
+			s.user = request.POST.get('u')
+			s.pwd = request.POST.get('pw')
+			s.save()
+			return redirect('/')
+		elif "dl" in request.POST:
+			ty = RegisterPage.objects.get(id=request.POST['id'])
+			ty.delete()
+			return redirect('/')
+		else:
+			pass
 	return render(request,'home.html',{"g":d})
 
 def logn(request):
