@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -75,14 +76,12 @@ WSGI_APPLICATION = 'DbCheck.wsgi.application'
 
 DATABASES = {
     'default': {
-	 # 'ENGINE': 'django.db.backends.sqlite3',
-      #  'NAME': BASE_DIR / 'db.sqlite3', */
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'apptek_analytics_db',
-        'HOST': '91.107.217.142',
-        'USER': 'Rabi',
-        'PASSWORD': 'PCSGlobal@4321',
-        'PORT': '54256'
+        'NAME': os.getenv('MYSQLDATABASE', 'railway'),
+        'HOST': os.getenv('MYSQLHOST', 'localhost'),
+        'USER': os.getenv('MYSQLUSER', 'root'),
+        'PASSWORD': os.getenv('MYSQLPASSWORD', ''),
+        'PORT': os.getenv('MYSQLPORT', '3306')
     }
 }
 
@@ -120,7 +119,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
-import os
 
 STATIC_URL = '/static/'
 # STATICFILES_DIRS = [BASE_DIR / 'static']
