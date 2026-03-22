@@ -75,14 +75,8 @@ WSGI_APPLICATION = 'DbCheck.wsgi.application'
 
 DATABASES = {
     'default': {
-	 # 'ENGINE': 'django.db.backends.sqlite3',
-      #  'NAME': BASE_DIR / 'db.sqlite3', */
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'apptek_analytics_db',
-        'HOST': '91.107.217.142',
-        'USER': 'Rabi',
-        'PASSWORD': 'PCSGlobal@4321',
-        'PORT': '54256'
+	 'ENGINE': 'django.db.backends.sqlite3',
+     'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
